@@ -1,0 +1,34 @@
+.dialogs{
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+    margin-left: 10px;
+    padding: 10px;
+}
+
+.dialog_items{
+
+}
+
+.dialog{
+    text-decoration: none;
+}
+.dialog a{
+    text-decoration: none;
+    font-size: 20px;
+    color: #000;
+}
+
+.messages{
+
+}
+
+.message{
+    
+}
+
+.active{
+    text-transform: uppercase;
+    
+    text-decoration: underline !important;
+    font-weight: 700;
+}
