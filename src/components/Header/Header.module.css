@@ -1,0 +1,10 @@
+.header{
+    grid-area: header;
+    background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(51,30,5,1) 62%, rgba(237,126,7,1) 100%);
+    
+  }
+  
+  .logo_img {
+    width: 200px;
+    height: 60px;
+  }

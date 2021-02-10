@@ -1,0 +1,36 @@
+.nav{
+    grid-area: nav;
+    background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(51,30,5,1) 62%, rgba(237,126,7,1) 100%);
+  }
+
+  .item a{
+    color: #fff;
+    text-decoration: none;
+    font-size: 26px;
+    transition: .5s;
+    
+  }
+
+  .item a:hover {
+      color: #fa8b02;
+      margin-left: 15px;
+      
+  }
+
+  .item {
+    margin-left: 10px;
+  }
+
+  .active {
+    color: #fa8b02 !important;
+    margin-left: 15px;
+    display: block;
+    border: 2px solid #fa8b02;
+    width: 130px;
+    text-align: center;
+    
+  }
+
+  
+  
+  
