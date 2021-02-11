@@ -1,0 +1,24 @@
+.post_block{
+    padding: 10px;
+}
+
+.post_area{
+    width: 500px;
+    height: 100px;
+    resize: none;
+}
+
+.btn_block{
+    width: 507px;
+    margin-bottom: 50px;
+}
+
+.btn{
+    width: 100px;
+    height: 25px;
+    float: right;
+    font-size: 18px;
+    background-color: #fa8b02;
+    border: 1px solid #000;
+    border-radius: 2px;
+}
