@@ -1,76 +1,87 @@
-let rerenderEntireTree = ()=>{
-  console.log('something');
-}
+let store = {
+  _state: {
+    profilePage: {
+      postData: [
+        { id: 1, message: "Hello how are you?", likesCount: 3 },
+        { id: 2, message: "It's my firs post", likesCount: 7 },
+      ],
+      newPostText: "",
+    },
+    dialogsPage: {
+      messagesData: [
+        { id: 1, message: "Hello" },
+        { id: 2, message: "How are you?" },
+        { id: 3, message: "Coronavirus" },
+        { id: 4, message: "Lets go chil" },
+        { id: 5, message: "Sure" },
+        { id: 6, message: "Be in five minutes" },
+      ],
+      dialogsData: [
+        { id: 1, name: "Dimych" },
+        { id: 2, name: "Andrey" },
+        { id: 3, name: "Sveta" },
+        { id: 4, name: "Sasha" },
+        { id: 5, name: "Victor" },
+        { id: 6, name: "Sergey" },
+      ],
+      newMessageText: "",
+    },
+  },
+  _rerenderEntireTree() {
+    console.log("something");
+  },
+  getState() {
+    return this._state;
+  },
+  subscribe(observer) {
+    this._rerenderEntireTree = observer;
+  },
 
-let state = {
-  profilePage: {
-    postData: [
-      { id: 1, message: "Hello how are you?", likesCount: 3 },
-      { id: 2, message: "It's my firs post", likesCount: 7 },
-    ],
-    newPostText: '',
-  },
-  dialogsPage: {
-    messagesData: [
-      { id: 1, message: "Hello" },
-      { id: 2, message: "How are you?" },
-      { id: 3, message: "Coronavirus" },
-      { id: 4, message: "Lets go chil" },
-      { id: 5, message: "Sure" },
-      { id: 6, message: "Be in five minutes" },
-    ],
-    dialogsData: [
-      { id: 1, name: "Dimych" },
-      { id: 2, name: "Andrey" },
-      { id: 3, name: "Sveta" },
-      { id: 4, name: "Sasha" },
-      { id: 5, name: "Victor" },
-      { id: 6, name: "Sergey" },
-    ],
-    newMessageText: '',
-  },
+  dispatch(action){
+   
+    if(action.type === 'ADD-NEW-POST'){
+      let newPost = {
+        id: 3,
+        message: this._state.profilePage.newPostText,
+        likesCount: 0,
+      };
+      this._state.profilePage.postData.push(newPost);
+      this._state.profilePage.newPostText = "";
+      this._rerenderEntireTree(this._state);
+    } else if (action.type === 'APDATE-NEW-POST-TEXT'){
+      this._state.profilePage.newPostText = action.newText;
+      this._rerenderEntireTree(this._state);
+    } else if(action.type === 'ADD-NEW-MESSAGE'){
+      let newMessage = {
+        id: 7,
+        message: this._state.dialogsPage.newMessageText,
+      };
+      this._state.dialogsPage.messagesData.push(newMessage);
+      this._state.dialogsPage.newMessageText = "";
+      this._rerenderEntireTree(this._state);
+    } else if(action.type === 'APDATE-NEW-MESSAGE'){
+      this._state.dialogsPage.newMessageText = action.newTextMessage;
+      this._rerenderEntireTree(this._state);
+    }
+  }
+  
 };
 
-export let addNewPost = () => {
-  
-  let newPost = {
-    id: 3,
-    message: state.profilePage.newPostText,
-    likesCount: 0,
-  };
-  state.profilePage.postData.push(newPost)
-  state.profilePage.newPostText = '';
-  rerenderEntireTree(state);
-}
+const ADD_POST = 'ADD-NEW-POST';
+const APDATE_POST = 'APDATE-NEW-POST-TEXT';
 
-export let updateNewPostText = (newText) => { 
-state.profilePage.newPostText = newText;
-rerenderEntireTree(state);
-}  
-  
+export const addPostActionCreator = ()=> {
+  return {
+    type: ADD_POST,
+  }
+};
 
+export const updateNewPostTextActionCreator = (text)=> {
+  return {
+    type: APDATE_POST,
+    newText: text,
+  }
+};
 
-export let addNewMessage = () => {
-  let newMessage = {
-    id:7,
-    message: state.dialogsPage.newMessageText,
-  };
-  state.dialogsPage.messagesData.push(newMessage);
-  state.dialogsPage.newMessageText = '';
-  rerenderEntireTree(state);
-}
-
-export let updateNewMessage = (newTextMessage) =>{
-  state.dialogsPage.newMessageText = newTextMessage;
-  
-  rerenderEntireTree(state);
-}
-
-export const subscribe = (observer) => {
-  rerenderEntireTree = observer;
-} 
-
-
-
-
-export default state;
+export default store;
+window.store = store;
