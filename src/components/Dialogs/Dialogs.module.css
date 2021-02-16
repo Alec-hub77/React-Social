@@ -22,8 +22,12 @@
 
 }
 
-.message{
-    
+.messages{
+    border: 1px solid #000;
+    width: 300px;
+    padding: 20px;
+    border-radius: 3px;
+    background-color: rgba(252, 186, 5, 0.3);
 }
 
 .active{

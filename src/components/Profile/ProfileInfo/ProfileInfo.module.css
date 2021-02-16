@@ -1,15 +1,30 @@
-.profileDescription{
+.profileDescription {
   padding: 10px;
+  vertical-align: middle;
 }
-  
-  .content_img{
-    height: 170px;
-    width: 100%;
-    object-fit: cover;
-  }
 
-  .avatar_img{
-    width: 150px;
-    height: 150px;
-    
-  }
+.info{
+  display: flex;
+}
+
+.content_img {
+  height: 170px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.avatar_img {
+  width: 150px;
+  height: 150px;
+}
+
+.info_description {
+  border: 1px solid #000;
+  border-radius: 10px;
+  width: 300px;
+  height: 70px;
+  margin-top: 10px;
+  padding: 5px;
+  background: #ff8800;
+  
+}
