@@ -8,6 +8,7 @@ import Profile from "./components/Profile/Profile";
 import News from "./components/News/News";
 
 const App = (props) => {
+  
   return (
     <div className="app-wrapper">
       <Header />
@@ -17,8 +18,7 @@ const App = (props) => {
           path="/profile"
           render={() => (
             <Profile
-              state={props.state.profilePage}
-              dispatch={props.dispatch}
+            store={props.store}
             />
           )}
         />
