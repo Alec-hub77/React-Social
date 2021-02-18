@@ -24,7 +24,7 @@ const MyPosts = (props) => {
   
   return (
     <div className={s.post_block}>
-      <div>
+      <div>        
         <textarea
           className={s.post_area}
           placeholder="Type your post"
