@@ -6,6 +6,7 @@ import Header from "./components/Header/Header";
 import Nav from "./components/Navbar/Nav";
 import Profile from "./components/Profile/Profile";
 import News from "./components/News/News";
+import UsersContainer from './components/Users/UsersContainer';
 
 const App = (props) => {
   
@@ -31,6 +32,7 @@ const App = (props) => {
           )}
         />
         <Route path="/news" render={() => <News />} />
+        <Route path="/users" render={() => <UsersContainer />} />
       </div>
     </div>
   );

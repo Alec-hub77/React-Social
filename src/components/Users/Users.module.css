@@ -1,0 +1,17 @@
+
+.photo_ava {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 2px solid #000;
+}
+
+.btn {
+    padding: 5px;
+    width: 100px;
+    font-size: 18px;
+    background-color: #fa8b02;
+    border: 1px solid #000;
+    border-radius: 2px;
+
+}

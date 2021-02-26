@@ -6,7 +6,7 @@ import Post from "./Post/Post";
 const MyPosts = (props) => {
 
   let posts = props.postData.map((p) => (
-    <Post message={p.message} id={p.id} likesCount={p.likesCount} />
+    <Post message={p.message} key={p.id} id={p.id} likesCount={p.likesCount} />
   ));
 
   let newPostElement = React.createRef();
@@ -19,7 +19,7 @@ const MyPosts = (props) => {
 
   let onPostChange = () =>{
     let text = newPostElement.current.value;
-    props.updateNewPostText(text);
+    props.onPostChange(text);
   }
   
   return (

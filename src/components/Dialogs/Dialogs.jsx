@@ -7,12 +7,12 @@ import Message from "./Message/Message";
 const Dialogs = (props) => {
   
 
-  let dialogsElement = props.dialogsData.map((d) => (
-    <DialogItem name={d.name} id={d.id} />
+  let dialogsElement = props.dialogsPage.dialogsData.map((d) => (
+    <DialogItem name={d.name} key={d.id} id={d.id} />
   ));
 
-  let messageElement = props.messagesData.map((m) => (
-    <Message message={m.message} id={m.id} />
+  let messageElement = props.dialogsPage.messagesData.map((m) => (
+    <Message message={m.message} key={m.id} id={m.id} />
   ));
 
   let messageArea = React.createRef();
@@ -24,7 +24,7 @@ const Dialogs = (props) => {
 
   let onMessageChange = ()=>{
     let text = messageArea.current.value;
-    props.onUpdateMessage(text);
+    props.onMessageChange(text);
    
     
   }
