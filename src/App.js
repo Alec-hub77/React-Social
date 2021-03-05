@@ -2,9 +2,9 @@ import React from "react";
 import { BrowserRouter, Switch, Route, Link, NavLink } from "react-router-dom";
 import "./App.css";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
-import Header from "./components/Header/Header";
+import HeaderContainer from "./components/Header/HeaderContainer";
 import Nav from "./components/Navbar/Nav";
-import Profile from "./components/Profile/Profile";
+import ProfileContainer from "./components/Profile/ProfileContainer";
 import News from "./components/News/News";
 import UsersContainer from './components/Users/UsersContainer';
 
@@ -12,13 +12,13 @@ const App = (props) => {
   
   return (
     <div className="app-wrapper">
-      <Header />
+      <HeaderContainer />
       <Nav />
       <div className="app-wrapper-content">
         <Route
-          path="/profile"
+          path="/profile/:userId?"
           render={() => (
-            <Profile
+            <ProfileContainer
             store={props.store}
             />
           )}
