@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Redirect } from "react-router-dom";
 import s from "./Dialogs.module.css";
 import DialogItem from "./DialogItem/DialogsItem";
 import Message from "./Message/Message";
@@ -19,7 +19,6 @@ const Dialogs = (props) => {
   let onAddMessage = () =>{
     props.addMessage();
     
-    
   }
 
   let onMessageChange = ()=>{
@@ -28,8 +27,6 @@ const Dialogs = (props) => {
    
     
   }
-
-  
 
   return (
     <div className={s.dialogs}>
@@ -40,5 +37,10 @@ const Dialogs = (props) => {
     </div>
   );
 };
+    
+  
+  
+
+  
 
 export default Dialogs;
