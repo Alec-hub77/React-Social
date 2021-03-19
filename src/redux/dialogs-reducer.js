@@ -1,10 +1,10 @@
-const ADD_NEW_MESSAGE = "ADD-NEW-MESSAGE";
-const APDATE_NEW_MESSAGE = "APDATE-NEW-MESSAGE";
+const SEND_MESSAGE = "SEND_MESSAGE";
+const APDATE_NEW_MESSAGE_BODY = "APDATE_NEW_MESSAGE_BODY";
 
 
 let initialState = {
   
-    messagesData: [
+    messages: [
       { id: 1, message: "Hello" },
       { id: 2, message: "How are you?" },
       { id: 3, message: "Coronavirus" },
@@ -20,58 +20,37 @@ let initialState = {
       { id: 5, name: "Victor" },
       { id: 6, name: "Sergey" },
     ],
-    newMessageText: "",
+    
   }
 
 
 const dialogsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case ADD_NEW_MESSAGE:{
-      let newMessage = {
-        id: 7,
-        message: state.newMessageText,
-      };
-      let stateCopy = {...state};
-      stateCopy.messagesData = [...state.messagesData];
-      stateCopy.messagesData.push(newMessage);
-      stateCopy.newMessageText = "";
-      return stateCopy;
-    }
-    case APDATE_NEW_MESSAGE:{
-      let stateCopy = {...state};
-      stateCopy.newMessageText = action.newTextMessage;
-      return stateCopy;
-    }
+    case SEND_MESSAGE:
+     let body = action.newMessageBody;
+     return {...state, messages: [...state.messages, {id:6, message: body}]}
+    
+    case APDATE_NEW_MESSAGE_BODY:
+     return {...state, newMessageBody: action.body}
+      
+    
     default:
       return state;
   }
 
-  // if(action.type === 'ADD-NEW-MESSAGE'){
-  //     let newMessage = {
-  //       id: 7,
-  //       message: state.newMessageText,
-  //     };
-  //     state.messagesData.push(newMessage);
-  //     state.newMessageText = "";
-
-  //   } else if(action.type === 'APDATE-NEW-MESSAGE'){
-  //     state.newMessageText = action.newTextMessage;
-
-  //   }
-
-  // return state;
 };
 
-export const newMessageActionCreator = () =>{
+export const newMessageActionCreator = (newMessageBody) =>{
   return {
-    type: ADD_NEW_MESSAGE
+    type: SEND_MESSAGE,
+    newMessageBody
   }
 }
 
-export const updateNewMessageCreator = (text) =>{
+export const updateNewMessageBodyCreator = (body) =>{
   return {
-    type: APDATE_NEW_MESSAGE,
-    newTextMessage: text
+    type: APDATE_NEW_MESSAGE_BODY,
+    body: body
   }
 }
 
