@@ -15,17 +15,7 @@ const Dialogs = (props) => {
     <Message message={m.message} key={m.id} id={m.id} />
   ));
 
-  let messageArea = React.createRef();
-  let onAddMessage = () =>{
-    props.addMessage();
-    
-  }
-
-  let onMessageChange = ()=>{
-    let text = messageArea.current.value;
-    props.onMessageChange(text);
-  } 
-  let addNewMessage = (values) => {
+   let addNewMessage = (values) => {
     props.addMessage(values.newMessageBody)
   }  
   
@@ -39,7 +29,6 @@ const Dialogs = (props) => {
   );
 };
 
-
 const AddMessageForm = (props) => {
   return (
         <form onSubmit={props.handleSubmit}>
@@ -52,4 +41,9 @@ const AddMessageForm = (props) => {
 const AddMessageFormRedux = reduxForm({form: "dialogAddMessageForm"})(AddMessageForm)
   
 
-export default Dialogs;
+export default Dialogs; 
+   
+ 
+
+
+
