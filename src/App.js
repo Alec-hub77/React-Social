@@ -8,9 +8,23 @@ import ProfileContainer from "./components/Profile/ProfileContainer";
 import News from "./components/News/News";
 import UsersContainer from './components/Users/UsersContainer';
 import Login from './components/Login/Login';
+import { connect } from 'react-redux';
+import {initializeApp} from './redux/app-reducer';
+import {withRouter} from 'react-router';
+import {compose} from 'redux';
+import Preloader from "./components/common/Preloader/Preloader";
 
-const App = (props) => {
-  
+class App extends React.Component {
+
+  componentDidMount(){   
+       
+    this.props.initializeApp() 
+}
+
+  render() {
+    if(!this.props.initialized){
+      return <Preloader/>
+    }
   return (
     <div className="app-wrapper">
       <HeaderContainer />
@@ -20,7 +34,7 @@ const App = (props) => {
           path="/profile/:userId?"
           render={() => (
             <ProfileContainer
-            store={props.store}
+            store={this.props.store}
             />
           )}
         />
@@ -28,7 +42,7 @@ const App = (props) => {
           path="/dialogs"
           render={() => (
             <DialogsContainer
-              store={props.store}
+              store={this.props.store}
             />
           )}
         />
@@ -37,7 +51,14 @@ const App = (props) => {
         <Route path="/login" render={()=> <Login/>} />
       </div>
     </div>
-  );
+    );
+  }
 };
 
-export default App;
+const mapStateToProps = (state) => ({
+  initialized: state.app.initialized
+})
+
+export default compose( 
+withRouter,
+connect(mapStateToProps, {initializeApp}))(App);

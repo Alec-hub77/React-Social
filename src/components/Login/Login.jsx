@@ -20,6 +20,9 @@ const LoginForm = (props) => {
       <div>
         <Field className={style.box} component={"input"} name={"rememberMe"} id={'remember'} type={"checkbox"} /> <label for={"remember"}>remember me</label> 
       </div>
+      { props.error &&  <div className={style.commonError}>
+          { props.error }
+        </div>}
       <div>
         <button className={style.btn}>Log in</button>
       </div>
@@ -37,13 +40,13 @@ const Login = (props) => {
     if(props.isAuth){
       return <Redirect to={'/profile'} />
     }
-
   return (
     <div>
       <h1>LOGIN</h1>
       <LoginReduxForm  onSubmit={onSubmit} />
     </div>
   );
+  
 };
 const mapStateToProps = (state) => ({
   isAuth: state.auth.isAuth

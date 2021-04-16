@@ -1,12 +1,12 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Redirect } from 'react-router-dom';
 import Logo from '../Header/logo.png';
 import s from './Header.module.css';
 
 
 
 const Header = (props)=>{
-    
+   
     return (
         <header className={s.header}>
             <div className={s.header_wrapper}>
@@ -15,7 +15,6 @@ const Header = (props)=>{
             {props.isAuth 
             ? <div> {props.login} <button className={s.logoutBtn} onClick={props.logout}>Log Out</button> </div> 
             : <NavLink to={'login/'}>Login</NavLink>}
-                
             </div>
             </div>
         </header>
